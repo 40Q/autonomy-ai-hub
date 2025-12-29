@@ -23,6 +23,7 @@ Admin hub and navigation shell for 40Q AI packages. It centralizes settings page
    composer update 40q/autonomy-ai-hub
    ```
 3. Activate **40Q Autonomy AI Hub** in wp-admin → Plugins (required by downstream AI packages).
+4. No manual provider registration is needed. Acorn auto-discovers `FortyQ\AutonomyAiHub\AutonomyAiServiceProvider` via the package’s `composer.json` `extra.acorn.providers` entry.
 
 ## Configuration
 - Publish config if you need per-site overrides:
