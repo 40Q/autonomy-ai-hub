@@ -65,18 +65,6 @@ class AutonomyAiServiceProvider extends ServiceProvider
             [$this, 'renderSettings']
         );
 
-        // Optional: surface SEO Assistant settings inside the hub.
-        if (class_exists('FortyQ\\SeoAssistant\\Admin\\SettingsPage')) {
-            add_submenu_page(
-                '40q-autonomy-ai',
-                __('SEO Assistant Settings', '40q-autonomy-ai'),
-                __('SEO Assistant', '40q-autonomy-ai'),
-                $capability,
-                '40q-autonomy-ai-seo-assistant',
-                [$this, 'renderSeoAssistantSettings']
-            );
-        }
-
         // Add other packages except media-alt and SEO (handled above).
         foreach ($config['packages'] ?? [] as $package) {
             $slug = $package['slug'] ?? null;
