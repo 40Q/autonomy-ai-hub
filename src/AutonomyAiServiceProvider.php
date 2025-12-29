@@ -17,6 +17,9 @@ class AutonomyAiServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Apply shared config overrides early so REST requests (which are not admin) also pick them up.
+        $this->applyPackageOverrides();
+
         if (!is_admin()) {
             return;
         }
@@ -26,8 +29,6 @@ class AutonomyAiServiceProvider extends ServiceProvider
         add_action('admin_enqueue_scripts', [$this, 'enqueueAssets']);
         add_action('admin_menu', [$this, 'repositionSeoAssistantMenu'], 99);
         add_filter('option_40q_seo_assistant_settings', [$this, 'filterSeoAssistantSettings']);
-
-        $this->applyPackageOverrides();
     }
 
     public function registerMenu(): void
